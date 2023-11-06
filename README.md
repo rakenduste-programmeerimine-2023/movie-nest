@@ -21,7 +21,7 @@ Projekti eesmärgiks on pakkuda filmihuvilistele võimalust leida uusi huvipakku
 
 Homepage (not logged in)
 
-![Alt text](readme-image/Homepage.png)
+![Alt text](readme-images/Homepage.png)
 
 My page
 
