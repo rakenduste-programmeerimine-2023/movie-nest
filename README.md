@@ -23,6 +23,14 @@ Homepage (not logged in)
 
 ![Alt text](readme-images/Homepage.png)
 
+Login
+
+![Alt text](readme-images/Login.png)
+
+Register
+
+![Alt text](readme-images/Register.png)
+
 My page
 
 ![Alt text](readme-images/My-page.png)
