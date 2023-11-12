@@ -1,0 +1,39 @@
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .left-buttons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .right-buttons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .search-button, .log-in-button, .sign-up-button, .contact-button {
+    padding: 3px 7px;
+    font-size: 12px;
+    border: 1px solid #24282b;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .search-button:hover, .log-in-button:hover, .sign-up-button:hover, .contact-button:hover {
+    background-color: #c9cacc;
+    color: #fff;
+  }
+  
+  .search-button span, .log-in-button span, .sign-up-button span, .contact-button {
+    filter: grayscale(100%);
+  }
+  
+  .logo {
+    width: 100px;
+    height: auto;
+  }
