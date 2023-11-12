@@ -15,7 +15,9 @@
   gap: 5px;
 }
 
-.search-button, .log-in-button, .sign-up-button {
+.search-button,
+.log-in-button,
+.sign-up-button {
   padding: 3px 7px;
   font-size: 12px;
   border: 1px solid #24282b;
@@ -24,12 +26,27 @@
   text-decoration: none;
 }
 
-.search-button:hover, .log-in-button:hover, .sign-up-button:hover {
+.contact-button {
+  padding: 3px 7px;
+  font-size: 12px;
+  border: none; /* Eemaldab piiri (border) */
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.search-button:hover,
+.log-in-button:hover,
+.sign-up-button:hover,
+.contact-button:hover {
   background-color: #c9cacc;
   color: #fff;
 }
 
-.search-button span, .log-in-button span, .sign-up-button span {
+.search-button span,
+.log-in-button span,
+.sign-up-button span,
+.contact-button {
   filter: grayscale(100%);
 }
 
