@@ -19,6 +19,9 @@ export default function HeaderButton() {
         <button className="log-in-button">
                 Log in
             </button>
+            <button className="sign-up-button">
+                Sign up
+            </button>
       </div>
     </div>
   );
