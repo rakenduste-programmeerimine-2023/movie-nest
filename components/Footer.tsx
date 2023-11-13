@@ -9,6 +9,7 @@ export default function Header() {
       <Image src={logo} alt="Logo" width={130} height={100} />
       <div className="right-buttons">
         <button className="home-button">Home</button>
+        <button className="contact-button">Contact</button>
       </div>
     </div>
   );
