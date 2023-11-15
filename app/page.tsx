@@ -32,12 +32,10 @@ export default async function Index() {
         </div>
       </nav>
 
-      <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
-        <Header />
-        <main className="flex-1 flex flex-col gap-6">
-          <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-          {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-        </main>
+      <div className="animate-in flex-1 w-full max-w-7xl flex flex-col justify-around gap-20 items-start text-2xl ml-20">
+        <h1>Popular Movies</h1>
+        <h1>Top rated Movies</h1>
+        <h1>Upcoming Movies</h1>
       </div>
 
       <footer className="w-full border-t border-t-foreground/10">
