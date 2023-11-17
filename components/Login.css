@@ -37,7 +37,6 @@
   .login-box input::placeholder {
     color: #999; /* Lighter gray for placeholder text */
   }
-
   .login-button {
     width: 100%;
     padding: 10px;
@@ -52,4 +51,10 @@
  
   .login-button:hover {
     background-color: #005a4e; /* Darker green on hover */
+  }
+
+  .login-heading {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 20px;
   }
