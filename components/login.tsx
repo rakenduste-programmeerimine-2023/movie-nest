@@ -6,6 +6,7 @@ export default function Login() {
     <div className="login-container">
       <div className="login-box">
         <div className="input-container">
+          <h2 className="login-heading">Please enter your login information</h2>
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" placeholder="Enter your username" />
         </div>
@@ -15,8 +16,8 @@ export default function Login() {
           <input type="password" id="password" placeholder="Enter your password" />
         </div>
 
-        <button className="login-button">Login</button>
-        
+        <button className="login-button">Log in</button>
+
       </div>
     </div>
   );
