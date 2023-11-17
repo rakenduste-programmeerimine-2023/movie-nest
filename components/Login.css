@@ -58,3 +58,13 @@
     margin-bottom: 15px;
     font-size: 20px;
   }
+
+  .register-link {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #00796b; /* Green color for the link */
+    cursor: pointer;
+    text-decoration: underline;
+    align-self: center;
+  }
+

@@ -18,6 +18,11 @@ export default function Login() {
 
         <button className="login-button">Log in</button>
 
+        <p className="register-link">
+            Not registered yet? <a href="#">Click here to register</a>
+        </p>
+
+
       </div>
     </div>
   );
