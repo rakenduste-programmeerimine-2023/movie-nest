@@ -31,7 +31,6 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-
 }
 
 .contact-button,
@@ -61,7 +60,7 @@
   filter: grayscale(100%);
 }
 
-.logo {
-  width: 100px;
-  height: auto;
+.logo-image {
+  width: 140px;
+  height: 20px;
 }
