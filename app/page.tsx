@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { getPopularMovies } from "./movie-requests/requests";
 import { getTopMovies } from "./movie-requests/requests";
 import { getUpcomingMovies } from "./movie-requests/requests";
-import Card from "@/components/movie-components/Card";
+import { Carousel } from "@/components/movie-components/Carousel";
 
 export default async function Index() {
   const cookieStore = cookies();
@@ -40,25 +40,13 @@ export default async function Index() {
         </div>
       </nav>
 
-      <div className="animate-in flex-1 w-full max-w-7xl flex flex-col justify-around gap-20 items-start text-2xl ml-20">
+      <div className="animate-in flex-1 w-full max-w-7xl flex flex-col justify-around gap-20 items-start text-2xl">
         <h1>Popular Movies</h1>
-        <div className="flex-1 w-full flex flex-row flex-wrap items-start gap-20">
-          {popularMovies.map((movie: any) => {
-            return <Card movie={movie}></Card>;
-          })}
-        </div>
+        <Carousel movies={popularMovies}></Carousel>
         <h1>Top rated Movies</h1>
-        <div className="flex-1 w-full flex flex-row flex-wrap gap-20 items-center">
-          {topMovies.map((movie: any) => {
-            return <Card movie={movie}></Card>;
-          })}
-        </div>
+        <Carousel movies={topMovies}></Carousel>
         <h1>Upcoming Movies</h1>
-        <div className="flex-1 w-full flex flex-row flex-wrap gap-20 items-center">
-          {upcomingMovies.map((movie: any) => {
-            return <Card movie={movie}></Card>;
-          })}
-        </div>
+        <Carousel movies={upcomingMovies}></Carousel>
       </div>
 
       <footer className="w-full border-t border-t-foreground/10">
