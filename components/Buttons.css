@@ -21,7 +21,6 @@
 
 .search-button,
 .log-in-button,
-.sign-up-button,
 .log-out-button {
   padding: 3px 10px;
   font-size: 12px;
@@ -46,7 +45,6 @@
 
 .search-button:hover,
 .log-in-button:hover,
-.sign-up-button:hover,
 .contact-button:hover,
 .home-button:hover,
 .log-out-button:hover {
@@ -56,7 +54,6 @@
 
 .search-button span,
 .log-in-button span,
-.sign-up-button span,
 .contact-button {
   filter: grayscale(100%);
 }
