@@ -7,7 +7,7 @@ export default function HeaderSignupLogin() {
   return (
     <div className="button-container">
       <div className="left-buttons">
-        <Image src={logo} alt="Logo" width={130} height={100} />
+        <Image src={logo} alt="Logo" className="logo-image" />
         <button className="search-button">
           <span role="img" aria-label="luup">
             🔍
