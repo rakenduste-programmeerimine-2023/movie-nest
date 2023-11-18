@@ -21,8 +21,6 @@ export default function HeaderButton() {
         <Link href="/login">
           <span className="log-in-button">Log in</span>
         </Link>
-
-        <button className="sign-up-button">Sign up</button>
       </div>
     </div>
   );
