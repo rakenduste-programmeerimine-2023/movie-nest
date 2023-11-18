@@ -1,0 +1,7 @@
+.custom-size {
+  font-size: 18px;
+}
+
+.p-container {
+  flex-shrink: 0; /* Prevent the container from shrinking */
+}
