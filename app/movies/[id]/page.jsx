@@ -21,7 +21,7 @@ async function MovieDetailsPage({ params }) {
         </div>
         <div className="flex flex-row justify-end gap-10">
           <div className="">
-            <img src="" />
+            <img src={IMAGE_BASE_URL + movieDetails.backdrop_path} />
           </div>
           <div className="animate-in w-2/4 flex flex-col gap-10">
             <div className="flex flex-row w-full gap-6">
