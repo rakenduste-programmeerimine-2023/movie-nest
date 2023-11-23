@@ -40,12 +40,12 @@ export default async function Index() {
         </div>
       </nav>
 
-      <div className="animate-in flex-1 w-full max-w-7xl flex flex-col justify-around gap-20 items-start text-2xl">
-        <h1>Popular Movies</h1>
+      <div className="animate-in flex-1 w-full max-w-7xl flex flex-col justify-around gap-20 items-start text-3xl">
+        <h1 className="ml-12">Popular Movies</h1>
         <Carousel movies={popularMovies}></Carousel>
-        <h1>Top rated Movies</h1>
+        <h1 className="ml-12">Top rated Movies</h1>
         <Carousel movies={topMovies}></Carousel>
-        <h1>Upcoming Movies</h1>
+        <h1 className="ml-12">Upcoming Movies</h1>
         <Carousel movies={upcomingMovies}></Carousel>
       </div>
 
