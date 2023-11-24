@@ -2,6 +2,7 @@ import React from "react";
 import "./Buttons.css";
 import Image from "next/image";
 import logo from "./images/MovieNestLogo.png";
+import Link from "next/link";
 
 export default function HeaderSignupLogin() {
   return (
@@ -17,7 +18,9 @@ export default function HeaderSignupLogin() {
       </div>
       <div className="right-buttons">
         <button className="home-button">Home</button>
-        <button className="contact-button">Contact</button>
+        <Link href="/contact">
+          <button className="contact-button">Contact</button>
+        </Link>
       </div>
     </div>
   );
