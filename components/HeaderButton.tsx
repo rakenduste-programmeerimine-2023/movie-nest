@@ -17,7 +17,9 @@ export default function HeaderButton() {
         </button>
       </div>
       <div className="right-buttons">
-        <button className="contact-button">Contact</button>
+        <Link href="/contact">
+          <button className="contact-button">Contact</button>
+        </Link>
         <Link href="/login">
           <span className="log-in-button">Log in</span>
         </Link>
