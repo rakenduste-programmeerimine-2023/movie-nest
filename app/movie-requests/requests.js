@@ -70,6 +70,21 @@ export const getMovieDetails = async (id) => {
   return data;
 };
 
+export const getMovieCredits = async (id) => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
+    {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.TMDB_API_AUTH}`,
+      },
+    }
+  );
+  const data = await res.json();
+
+  return data;
+};
+
 export const getSimilarMovies = async (id) => {
   const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/similar?`, {
     headers: {
