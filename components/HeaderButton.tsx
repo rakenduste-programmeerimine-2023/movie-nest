@@ -3,6 +3,7 @@ import "./Buttons.css";
 import Image from "next/image";
 import logo from "./images/MovieNestLogo.png";
 import Link from "next/link";
+import AuthButton from "./AuthButton";
 
 export default function HeaderButton() {
   return (
@@ -18,9 +19,10 @@ export default function HeaderButton() {
       </div>
       <div className="right-buttons">
         <button className="contact-button">Contact</button>
-        <Link href="/login">
+        {/* <Link href="/login">
           <span className="log-in-button">Log in</span>
-        </Link>
+        </Link> */}
+        <AuthButton />
       </div>
     </div>
   );
