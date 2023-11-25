@@ -10,12 +10,14 @@ export default function HeaderButton() {
     <div className="button-container">
       <div className="left-buttons">
         <Image src={logo} alt="Logo" className="logo-image" />
+        <Link href="/search">
         <button className="search-button">
           <span role="img" aria-label="luup">
             🔍
           </span>
           Search
         </button>
+        </Link>
       </div>
       <div className="right-buttons">
         <Link href="/contact">
