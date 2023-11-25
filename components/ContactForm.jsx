@@ -17,6 +17,13 @@ const ContactForm = () => {
           type="email"
           id="email"
         />
+        <label htmlFor="message">Message:</label>
+        <textarea
+          className="text-black border border-gray-600 rounded"
+          id="message"
+          cols="30"
+          rows="10"
+        ></textarea>
       </form>
     </div>
   );
