@@ -11,6 +11,12 @@ const ContactForm = () => {
           type="text"
           id="name"
         />
+        <label htmlFor="email">Email:</label>
+        <input
+          className="text-black border border-gray-600 rounded"
+          type="email"
+          id="email"
+        />
       </form>
     </div>
   );
