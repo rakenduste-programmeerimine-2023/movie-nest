@@ -24,6 +24,12 @@ const ContactForm = () => {
           cols="30"
           rows="10"
         ></textarea>
+        <button
+          type="submit"
+          className="self-start border border-gray-600 rounded py-2 px-4"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
