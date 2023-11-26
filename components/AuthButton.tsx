@@ -22,10 +22,10 @@ export default async function AuthButton() {
   }
 
   return user ? (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4" style={{ whiteSpace: 'nowrap', display: 'inline-flex' }}>
       Hey, {user.email}!
       <form action={signOut}>
-        <button className="log-out-button">
+        <button className="log-out-button" style={{ whiteSpace: 'nowrap', display: 'inline-flex' }}>
           Log out
         </button>
       </form>
@@ -34,6 +34,7 @@ export default async function AuthButton() {
     <Link
       href="/login"
       className="log-in-button"
+      style={{ whiteSpace: 'nowrap', display: 'inline-flex' }}
     >
       Login
     </Link>
