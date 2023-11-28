@@ -43,12 +43,12 @@ export default function SearchResults({ searchText, movies }) {
         </h1>
         <div className="text-black mt-2">
           <select
-            class="form-select"
             aria-label="Default select example"
-            className="rounded pl-2 border-2 border-solid border-gray-400"
+            className="form-select rounded pl-2 border-2 border-solid border-gray-400"
             onChange={(e) => filterMovies(e.target.value)}
+            defaultValue={"DEFAULT"}
           >
-            <option selected disabled>
+            <option value="DEFAULT" disabled>
               Sort by
             </option>
             <option value="release_date">release year</option>
