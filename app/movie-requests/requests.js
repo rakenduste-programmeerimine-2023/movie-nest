@@ -45,7 +45,7 @@ export const getUpcomingMovies = async () => {
 
 export const getMovies = async (query) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie?language=en-US&page=1$limit=3&query=${query}`,
+    `https://api.themoviedb.org/3/search/movie?query=${query}&language=en-US&page=1`,
     {
       headers: {
         accept: "application/json",

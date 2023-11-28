@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { getMovies } from '@/app/movie-requests/requests';
 import Card from '@/components/movie-components/Card'
 import AuthButton from '@/components/AuthButton';
+import SearchResults from "@/components/SearchResults";
 
 
 async function SearchPage({params}) {
@@ -18,16 +19,7 @@ return (
         <AuthButton />
       </div>
     </nav>
-    <div className="container my-3">
-      <h1>Search Results</h1>
-      <div className="d-flex flexwrap gap-3">
-        {movies && Array.isArray(movies) ? (
-          movies.map((movie) => <Card key={movie.id} movie={movie} />)
-        ) : (
-          <div>No movies found</div>
-        )}
-      </div>
-    </div>
+    <SearchResults searchText={searchText} movies={movies} />
     <footer className="w-full border-t border-t-foreground/10">
       <div className="w-full flex justify-center border-b border-b-foreground/10 h-16">
         <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
