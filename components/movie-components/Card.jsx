@@ -12,10 +12,16 @@ function Card({ movie }) {
             alt=""
             className="card-image"
           />
-          <div className="card-body">
+          <div 
+            className="card-body overflow-y-auto"
+            style={{
+              width: "220px",
+              maxHeight: "220px",
+            }}
+          >
             <h4 className="card-title">{movie.title}</h4>
             <p
-              className="card-text text-sm overflow-y-auto"
+              className="card-text text-sm"
               style={{ height: "150px", paddingRight: "15px" }}
             >
               {movie.overview}
