@@ -12,7 +12,7 @@ function Card({ movie }) {
             alt=""
             className="card-image"
           />
-          <div 
+          <div
             className="card-body overflow-y-auto"
             style={{
               width: "220px",
