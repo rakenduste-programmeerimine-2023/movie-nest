@@ -1,6 +1,6 @@
 export const getPopularMovies = async () => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1$limit=3",
+    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1$",
     {
       headers: {
         accept: "application/json",
@@ -15,7 +15,7 @@ export const getPopularMovies = async () => {
 
 export const getTopMovies = async () => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1$limit=3",
+    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1$",
     {
       headers: {
         accept: "application/json",
@@ -30,7 +30,7 @@ export const getTopMovies = async () => {
 
 export const getUpcomingMovies = async () => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1$limit=3",
+    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1$",
     {
       headers: {
         accept: "application/json",

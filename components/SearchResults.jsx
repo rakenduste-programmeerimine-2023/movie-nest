@@ -1,13 +1,39 @@
 "use client";
+
 import Card from "@/components/movie-components/Card";
 import { useEffect, useState } from "react";
 
-function SearchResults({ searchText, movies }) {
-    const [filteredMovies, setFilteredMovies] = useState(movies);
+export default function SearchResults({ searchText, movies }) {
+  const [filteredMovies, setFilteredMovies] = useState(movies);
 
-    useEffect(() => {
-        setFilteredMovies(movies);
-      }, [movies]);
+  useEffect(() => {
+    setFilteredMovies(movies);
+  }, [movies]);
+
+  const filterMovies = (filter) => {
+    let sortedMovies = [];
+    switch (filter) {
+      case "release_date":
+        sortedMovies = [...movies].sort(
+          (a, b) => new Date(b.release_date) - new Date(a.release_date)
+        );
+        break;
+
+      case "popularity":
+        sortedMovies = [...movies].sort((a, b) => b.popularity - a.popularity);
+        break;
+
+      case "vote_average":
+        sortedMovies = [...movies].sort(
+          (a, b) => b.vote_average - a.vote_average
+        );
+        break;
+
+      default:
+        break;
+    }
+    setFilteredMovies(sortedMovies);
+  };
 
   return (
     <div className="container my-3">
@@ -36,9 +62,6 @@ function SearchResults({ searchText, movies }) {
           return <Card key={movie.id} movie={movie} />;
         })}
       </div>
-      </div>
-      
-  )
+    </div>
+  );
 }
-
-export default SearchResults
