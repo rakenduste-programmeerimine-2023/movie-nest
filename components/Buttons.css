@@ -61,6 +61,10 @@
   filter: grayscale(100%);
 }
 
+.contact-button {
+  margin-right: 10px;
+}
+
 .logo-image {
   width: 140px;
   height: 20px;

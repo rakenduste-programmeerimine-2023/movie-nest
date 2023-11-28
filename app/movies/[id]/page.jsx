@@ -2,7 +2,7 @@ import HeaderButton from "@/components/HeaderButton";
 import Footer from "@/components/Footer";
 import { getMovieDetails } from "../../movie-requests/requests";
 import { getMovieCredits } from "../../movie-requests/requests";
-import AuthButton from '@/components/AuthButton';
+import AuthButton from "@/components/AuthButton";
 
 async function MovieDetailsPage({ params }) {
   const IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
@@ -12,7 +12,7 @@ async function MovieDetailsPage({ params }) {
   return (
     <div className="w-full flex flex-col min-h-screen gap-20 items-center">
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
+        <div className="w-full max-w-7xl flex justify-between items-center p-3 text-sm">
           <HeaderButton />
           <AuthButton />
         </div>
@@ -120,7 +120,7 @@ async function MovieDetailsPage({ params }) {
 
       <footer className="w-full border-t border-t-foreground/10 mt-auto">
         <div className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-          <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
+          <div className="w-full max-w-7xl flex justify-between items-center p-3 text-sm">
             <Footer />
           </div>
         </div>
