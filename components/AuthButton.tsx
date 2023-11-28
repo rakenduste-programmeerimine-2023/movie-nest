@@ -27,12 +27,13 @@ export default async function AuthButton() {
       style={{ whiteSpace: "nowrap", display: "inline-flex" }}
     >
       {/* Hey, {user.email}! */}
-      <button
+      <Link
+        href="/my-page"
         className="my-page-button"
         style={{ whiteSpace: "nowrap", display: "inline-flex" }}
       >
         My page
-      </button>
+      </Link>
       <form action={signOut}>
         <button
           className="log-out-button"
