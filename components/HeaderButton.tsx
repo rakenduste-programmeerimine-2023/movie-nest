@@ -13,7 +13,9 @@ export default function HeaderButton() {
   return (
     <div className="button-container">
       <div className="left-buttons">
+      <Link href="http://localhost:3000/">
         <Image src={logo} alt="Logo" className="logo-image" />
+        </Link>
         <SearchInput/>
         {/* <Link href="/search">
         <button className="search-button">
@@ -28,10 +30,7 @@ export default function HeaderButton() {
         <Link href="/contact">
           <button className="contact-button">Contact</button>
         </Link>
-        {/* <Link href="/login">
-          <span className="log-in-button">Log in</span>
-        </Link> */}
-        {/* <AuthButton /> */}
+        
       </div>
     </div>
   );

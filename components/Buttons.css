@@ -22,7 +22,8 @@
 .search-button,
 .log-in-button,
 .log-out-button,
-.back-button {
+.back-button,
+.my-page-button {
   padding: 3px 10px;
   font-size: 12px;
   border: 1px solid #24282b;
@@ -48,7 +49,8 @@
 .contact-button:hover,
 .home-button:hover,
 .log-out-button:hover,
-.back-button {
+.my-page-button:hover,
+.back-button:hover {
   background-color: #c9cacc;
   color: #fff;
 }
