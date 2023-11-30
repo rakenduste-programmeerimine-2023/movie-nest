@@ -5,6 +5,9 @@ import { redirect } from "next/navigation";
 import "../../components/Buttons.css";
 import React from "react";
 import Footer from "../../components/Footer";
+import HeaderButton from "../../components/HeaderButton";
+import AuthButton from "../../components/AuthButton";
+
 
 export default function Login({
   searchParams,
@@ -58,8 +61,28 @@ export default function Login({
     ); /* message=Check email to continue sign in process */
   };
 
+  const cookieStore = cookies();
+
+  const canInitSupabaseClient = () => {
+    // This function is just for the interactive tutorial.
+    // Feel free to remove it once you have Supabase connected.
+    try {
+      createClient(cookieStore);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
+  const isSupabaseConnected = canInitSupabaseClient();
   return (
     <>
+      <nav className="w-full justify-center border-b border-b-foreground/10 h-16">
+        <div className="w-full max-w-7xl mx-auto flex justify-between items-center p-3 text-sm">
+          <HeaderButton />
+          {isSupabaseConnected && <AuthButton />}
+        </div>
+      </nav>
       <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
         <Link
           href="/"
