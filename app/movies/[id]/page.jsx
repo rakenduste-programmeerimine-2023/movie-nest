@@ -3,11 +3,26 @@ import Footer from "@/components/Footer";
 import { getMovieDetails } from "../../movie-requests/requests";
 import { getMovieCredits } from "../../movie-requests/requests";
 import AuthButton from "@/components/AuthButton";
+import ManageFavorite from "@/components/movie-components/ManageFavorite";
+
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 async function MovieDetailsPage({ params }) {
   const IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
   const movieDetails = await getMovieDetails(params.id);
   const movieCredits = await getMovieCredits(params.id);
+
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <div className="w-full flex flex-col min-h-screen gap-20 items-center">
@@ -17,34 +32,22 @@ async function MovieDetailsPage({ params }) {
           <AuthButton />
         </div>
       </nav>
-      <div className="flex flex-col w-fit items-center">
-        <div className="animate-in flex flex-row gap-8 items-center pb-10">
-          <h1 className="text-2xl mr-10 font-bold">{movieDetails.title}</h1>
-          <button className="mt-2 bg-gray-600 hover:bg-gray-400 text-white font-bold py-1 px-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-8 h-8"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-              />
-            </svg>
-          </button>
-          <button className="mt-2 bg-gray-600 hover:bg-gray-400 text-white font-bold py-2 px-4">
-            Add to watched
-          </button>
-        </div>
+      <div className="flex flex-col w-fit items-start">
+        <div className="animate-in flex flex-row gap-8 self-center items-center pb-10"></div>
         <div className="flex flex-row justify-end gap-10">
           <div>
             <img src={IMAGE_BASE_URL + movieDetails.backdrop_path} />
           </div>
-          <div className="animate-in w-2/4 flex flex-col gap-10">
+          <div className="animate-in w-2/4 flex flex-col gap-10 self-start">
+            <div className="flex flex-row h-10">
+              <h1 className="text-2xl mr-10 font-bold self-start w-1/3">
+                {movieDetails.title}
+              </h1>
+              <div className="flex flex-row">
+                {session && <ManageFavorite movieid={params.id} user={user} />}
+              </div>
+            </div>
+
             <div className="flex flex-row w-full gap-6">
               <h4 className="text-xl">Genres:</h4>
               <div className="w-1/2 mt-1">
@@ -63,7 +66,7 @@ async function MovieDetailsPage({ params }) {
                     ))}
               </div>
             </div>
-            <div className="flex flex-col w-2/3 min-w-fit pr-20 gap-5">
+            <div className="flex flex-col w-1/2 pr-20 gap-5">
               <h4 className="text-xl">Description:</h4>
               <p>{movieDetails.overview}</p>
             </div>
