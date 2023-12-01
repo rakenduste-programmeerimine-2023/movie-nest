@@ -60,16 +60,16 @@ const ManageToWatch = ({ movieid, user }) => {
     <div className="relative">
       <button
         onClick={submitHandler}
-        className="py-1 px-2 hover:bg-gray-300 border-solid border border-gray-800 rounded self-center flex-shrink-0"
+        className="py-1 px-2 hover:bg-gray-300 border-solid border border-gray-800 rounded"
       >
         Watch Later
       </button>
       {actionMessage && (
-        <div className="absolute bottom-0 left-0 right-0 top-11 text-xs">
+        <div className="absolute bottom-0 left-2 right-0 top-11 text-xs">
           <p className="">{actionMessage}</p>
         </div>
       )}
-      <div className="absolute bottom-0 left-0 right-0 top-11 text-xs w-2/3">
+      <div className="absolute bottom-0 left-2 right-0 top-11 text-xs w-2/3">
         {errorMessage && <p>{errorMessage}</p>}
       </div>
     </div>
