@@ -4,6 +4,7 @@ import { getMovieDetails } from "../../movie-requests/requests";
 import { getMovieCredits } from "../../movie-requests/requests";
 import AuthButton from "@/components/AuthButton";
 import ManageFavorite from "@/components/movie-components/ManageFavorite";
+import ManageWatched from "@/components/movie-components/ManageWatched";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -43,9 +44,17 @@ async function MovieDetailsPage({ params }) {
               <h1 className="text-2xl mr-10 font-bold self-start w-1/3">
                 {movieDetails.title}
               </h1>
-              <div className="flex flex-row">
-                {session && <ManageFavorite movieid={params.id} user={user} />}
-              </div>
+
+              {session && (
+                <div className="grid grid-cols-2 gap-2 items-end">
+                  <div className="col-span-1 self-start">
+                    <ManageFavorite movieid={params.id} user={user} />
+                  </div>
+                  <div className="col-span-1 self-start">
+                    <ManageWatched movieid={params.id} user={user} />
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-row w-full gap-6">
