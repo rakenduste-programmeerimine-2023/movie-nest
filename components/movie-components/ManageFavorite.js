@@ -57,10 +57,10 @@ const ManageFavorite = ({ movieid, user }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <button
         onClick={submitHandler}
-        className="font-bold py-1 px-2 mr-6 border-solid border border-gray-800 rounded group transition-colors self-center flex-shrink-0"
+        className="font-bold py-1 px-2 border-solid border border-gray-800 rounded group transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

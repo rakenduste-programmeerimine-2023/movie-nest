@@ -6,6 +6,7 @@ import AuthButton from "@/components/AuthButton";
 import ManageFavorite from "@/components/movie-components/ManageFavorite";
 import ManageWatched from "@/components/movie-components/ManageWatched";
 import ManageToWatch from "@/components/movie-components/ManageToWatch";
+import "@/components/movie-components/MovieImages.css";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -37,29 +38,29 @@ async function MovieDetailsPage({ params }) {
       <div className="flex flex-col w-fit items-start">
         <div className="animate-in flex flex-row gap-8 self-center items-center pb-10"></div>
         <div className="flex flex-row justify-end gap-10">
-          <div>
-            <img src={IMAGE_BASE_URL + movieDetails.backdrop_path} />
+          <div className="flex flex-col w-1/2 items-end">
+            <img
+              src={IMAGE_BASE_URL + movieDetails.backdrop_path}
+              className="custom-width"
+            />
+            {session && (
+              <div className="grid grid-cols-3 mt-3">
+                <div className="col-span-1">
+                  <ManageFavorite movieid={params.id} user={user} />
+                </div>
+                <div className="col-span-1">
+                  <ManageWatched movieid={params.id} user={user} />
+                </div>
+                <div className="col-span-1">
+                  <ManageToWatch movieid={params.id} user={user} />
+                </div>
+              </div>
+            )}
           </div>
           <div className="animate-in w-2/4 flex flex-col gap-10 self-start">
-            <div className="flex flex-row h-10">
-              <h1 className="text-2xl mr-10 font-bold self-start w-1/3">
-                {movieDetails.title}
-              </h1>
-
-              {session && (
-                <div className="grid grid-cols-3">
-                  <div className="col-span-1 self-start">
-                    <ManageFavorite movieid={params.id} user={user} />
-                  </div>
-                  <div className="col-span-1 self-start">
-                    <ManageWatched movieid={params.id} user={user} />
-                  </div>
-                  <div className="col-span-1 self-start">
-                    <ManageToWatch movieid={params.id} user={user} />
-                  </div>
-                </div>
-              )}
-            </div>
+            <h1 className="text-2xl mr-10 font-bold self-start w-1/3">
+              {movieDetails.title}
+            </h1>
 
             <div className="flex flex-row w-full gap-6">
               <h4 className="text-xl">Genres:</h4>
