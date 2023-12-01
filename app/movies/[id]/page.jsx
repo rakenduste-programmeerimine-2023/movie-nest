@@ -5,6 +5,7 @@ import { getMovieCredits } from "../../movie-requests/requests";
 import AuthButton from "@/components/AuthButton";
 import ManageFavorite from "@/components/movie-components/ManageFavorite";
 import ManageWatched from "@/components/movie-components/ManageWatched";
+import ManageToWatch from "@/components/movie-components/ManageToWatch";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -46,12 +47,15 @@ async function MovieDetailsPage({ params }) {
               </h1>
 
               {session && (
-                <div className="grid grid-cols-2 gap-2 items-end">
+                <div className="grid grid-cols-3">
                   <div className="col-span-1 self-start">
                     <ManageFavorite movieid={params.id} user={user} />
                   </div>
                   <div className="col-span-1 self-start">
                     <ManageWatched movieid={params.id} user={user} />
+                  </div>
+                  <div className="col-span-1 self-start">
+                    <ManageToWatch movieid={params.id} user={user} />
                   </div>
                 </div>
               )}

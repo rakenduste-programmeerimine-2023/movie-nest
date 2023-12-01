@@ -65,11 +65,13 @@ const ManageFavorite = ({ movieid, user }) => {
         Watched
       </button>
       {actionMessage && (
-        <div className="absolute bottom-0 left-0 right-0 top-11 text-sm">
+        <div className="absolute bottom-0 left-0 right-0 top-11 text-xs">
           <p className="">{actionMessage}</p>
         </div>
       )}
-      <div>{errorMessage && <p>{errorMessage}</p>}</div>
+      <div className="absolute bottom-0 left-0 right-0 top-11 text-xs w-2/3">
+        {errorMessage && <p>{errorMessage}</p>}
+      </div>
     </div>
   );
 };
