@@ -5,6 +5,7 @@ import HeaderButton from "@/components/HeaderButton";
 import AuthButton from "@/components/AuthButton";
 import Footer from "@/components/Footer";
 import ManageMyPage from "@/components/movie-components/ManageMyPage";
+import "@/components/movie-components/Carousel.css";
 
 export default async function Account() {
   const cookieStore = cookies();
@@ -30,8 +31,8 @@ export default async function Account() {
         </div>
       </nav>
 
-      <div className="animate-in flex-1 w-full flex flex-col gap-10 items-center text-2xl">
-        <h1>{user.email}'s page</h1>
+      <div className="animate-in flex-1 w-full flex flex-col gap-10 items-start text-2xl">
+        {/* <h1 className="custom-margin">{user.email}'s page</h1> */}
         <ManageMyPage user={user} />
       </div>
 
