@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import "./Buttons.css";
+import MyPageButton from "@/components/MyPageButton";
 
 export default async function AuthButton() {
   const cookieStore = cookies();
@@ -27,13 +28,7 @@ export default async function AuthButton() {
       style={{ whiteSpace: "nowrap", display: "inline-flex" }}
     >
       {/* Hey, {user.email}! */}
-      <Link
-        href="/my-page"
-        className="my-page-button"
-        style={{ whiteSpace: "nowrap", display: "inline-flex" }}
-      >
-        My page
-      </Link>
+      <MyPageButton />
       <form action={signOut}>
         <button
           className="log-out-button"
