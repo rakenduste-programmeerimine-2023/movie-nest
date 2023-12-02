@@ -1,4 +1,7 @@
-import { getMovieDetails } from "../../app/movie-requests/requests";
+import {
+  getMovieDetails,
+  getSimilarMovies,
+} from "../../app/movie-requests/requests";
 import { Carousel } from "@/components/movie-components/Carousel";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -12,6 +15,7 @@ export default async function ManageMyPage({ user }) {
   const watchLaterMovieDetailsArray = [];
   const watchedMovieDetailsArray = [];
   const favoriteMovieDetailsArray = [];
+  var lastFavorite = undefined;
 
   const { data: watchLaterData, error: watchLaterError } = await supabase
     .from("WatchLater")
@@ -53,7 +57,13 @@ export default async function ManageMyPage({ user }) {
   for (let i = 0; i < favoriteData.length; i++) {
     const movieDetails = await getMovieDetails(favoriteData[i].movie_id);
     favoriteMovieDetailsArray.push(movieDetails);
+    if (i === favoriteData.length - 1) {
+      lastFavorite = favoriteData[i].movie_id;
+    }
   }
+
+  const lastFavoriteMovieDetails = await getSimilarMovies(lastFavorite);
+
   return (
     <div className="flex flex-col self-center w-full">
       <div className="flex flex-col w-full">
@@ -68,6 +78,10 @@ export default async function ManageMyPage({ user }) {
       <div className="flex flex-col w-full">
         <h1 className="mb-4 mt-8 self-center">Favorites</h1>
         <Carousel movies={favoriteMovieDetailsArray}></Carousel>
+      </div>
+      <div className="flex flex-col w-full">
+        <h1 className="mb-4 mt-8 self-center">Recommended</h1>
+        <Carousel movies={lastFavoriteMovieDetails}></Carousel>
       </div>
       {errorMessage && <p>{errorMessage}</p>}
     </div>
