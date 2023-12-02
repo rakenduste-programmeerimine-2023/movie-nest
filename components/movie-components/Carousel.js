@@ -11,6 +11,10 @@ export function Carousel({ movies }) {
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
+  if (!movies || movies.length === 0) {
+    return <div className="w-full flex justify-center"></div>;
+  }
+
   return (
     <div className="w-full flex justify-center">
       <ReactSimplyCarousel
