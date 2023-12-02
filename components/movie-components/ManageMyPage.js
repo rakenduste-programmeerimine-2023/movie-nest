@@ -2,7 +2,6 @@ import { getMovieDetails } from "../../app/movie-requests/requests";
 import { Carousel } from "@/components/movie-components/Carousel";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import "@/components/movie-components/Carousel.css";
 
 export default async function ManageMyPage({ user }) {
   const cookieStore = cookies();
@@ -12,6 +11,7 @@ export default async function ManageMyPage({ user }) {
   var errorMessage = "";
   const watchLaterMovieDetailsArray = [];
   const watchedMovieDetailsArray = [];
+  const favoriteMovieDetailsArray = [];
 
   const { data: watchLaterData, error: watchLaterError } = await supabase
     .from("WatchLater")
@@ -40,16 +40,34 @@ export default async function ManageMyPage({ user }) {
     const movieDetails = await getMovieDetails(watchedData[i].movie_id);
     watchedMovieDetailsArray.push(movieDetails);
   }
+
+  const { data: favoriteData, error: favoriteError } = await supabase
+    .from("Favorite")
+    .select("id, user_id, movie_id")
+    .eq("user_id", userId);
+
+  if (favoriteError) {
+    errorMessage = favoriteError.message;
+  }
+
+  for (let i = 0; i < favoriteData.length; i++) {
+    const movieDetails = await getMovieDetails(favoriteData[i].movie_id);
+    favoriteMovieDetailsArray.push(movieDetails);
+  }
   return (
     <div className="flex flex-col self-center w-full">
       <div className="flex flex-col w-full">
-        <h1 className="mb-4 self-start custom-margin">Watch Later</h1>
+        <h1 className="mb-4 self-center">Watch Later</h1>
 
         <Carousel movies={watchLaterMovieDetailsArray}></Carousel>
       </div>
       <div className="flex flex-col w-full">
-        <h1 className="mb-4 mt-8 self-start custom-margin">Already Watched</h1>
+        <h1 className="mb-4 mt-8 self-center">Already Watched</h1>
         <Carousel movies={watchedMovieDetailsArray}></Carousel>
+      </div>
+      <div className="flex flex-col w-full">
+        <h1 className="mb-4 mt-8 self-center">Favorites</h1>
+        <Carousel movies={favoriteMovieDetailsArray}></Carousel>
       </div>
       {errorMessage && <p>{errorMessage}</p>}
     </div>
