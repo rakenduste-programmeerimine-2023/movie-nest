@@ -24,11 +24,11 @@ export default function SearchInput() {
       >
         <input
           onChange={(e) => setSearchText(e.target.value)}
-          className="form-control mr-sm-2 rounded text-black pl-2 border-2 border-solid border-gray-400 "
+          className="form-control mr-sm-2 rounded text-black pl-2 border border-solid border-gray-600 "
           type="search"
           placeholder="Search"
           aria-label="Search"
-          style={{ width: "180px", height: "26px", outline: "none" }}
+          style={{ width: "180px", height: "28px", outline: "none" }}
         />
         <button className="search-button" type="submit">
           <span role="img" aria-label="luup">
