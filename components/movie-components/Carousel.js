@@ -10,20 +10,13 @@ export function Carousel({ movies }) {
   const IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  var showItems = 1;
-
-  if (movies.length > 4) {
-    showItems = 5;
-  } else {
-    showItems = movies.length;
-  }
 
   return (
     <div className="w-full flex justify-center">
       <ReactSimplyCarousel
         activeSlideIndex={activeSlideIndex}
         onRequestChange={setActiveSlideIndex}
-        itemsToShow={showItems}
+        itemsToShow={5}
         itemsToScroll={1}
         forwardBtnProps={{
           style: {
