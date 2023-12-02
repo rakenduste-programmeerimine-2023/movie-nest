@@ -15,6 +15,7 @@ export function Carousel({ movies }) {
     return <div className="w-full flex justify-center"></div>;
   }
 
+
   return (
     <div className="w-full flex justify-center">
       <ReactSimplyCarousel
