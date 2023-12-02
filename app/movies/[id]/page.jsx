@@ -6,7 +6,7 @@ import AuthButton from "@/components/AuthButton";
 import ManageFavorite from "@/components/movie-components/ManageFavorite";
 import ManageWatched from "@/components/movie-components/ManageWatched";
 import ManageToWatch from "@/components/movie-components/ManageToWatch";
-import "@/components/movie-components/MovieImages.css";
+import "@/components/movie-components/Custom.css";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
