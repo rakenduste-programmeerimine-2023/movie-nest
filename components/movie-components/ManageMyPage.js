@@ -68,21 +68,44 @@ export default async function ManageMyPage({ user }) {
     <div className="flex flex-col self-center w-full">
       <div className="flex flex-col w-full">
         <h1 className="mb-4 self-center">Watch Later</h1>
-
-        <Carousel movies={watchLaterMovieDetailsArray}></Carousel>
+        {watchLaterMovieDetailsArray &&
+        watchLaterMovieDetailsArray.length > 0 ? (
+          <Carousel movies={watchLaterMovieDetailsArray}></Carousel>
+        ) : (
+          <p className="mb-4 self-center text-sm">No entries added yet</p>
+        )}
       </div>
       <div className="flex flex-col w-full">
         <h1 className="mb-4 mt-8 self-center">Already Watched</h1>
-        <Carousel movies={watchedMovieDetailsArray}></Carousel>
+        {watchedMovieDetailsArray && watchedMovieDetailsArray.length > 0 ? (
+          <Carousel movies={watchedMovieDetailsArray}></Carousel>
+        ) : (
+          <p className="mb-4 self-center text-sm">No entries added yet</p>
+        )}
       </div>
       <div className="flex flex-col w-full">
         <h1 className="mb-4 mt-8 self-center">Favorites</h1>
-        <Carousel movies={favoriteMovieDetailsArray}></Carousel>
+        {favoriteMovieDetailsArray && favoriteMovieDetailsArray.length > 0 ? (
+          <Carousel movies={favoriteMovieDetailsArray}></Carousel>
+        ) : (
+          <p className="mb-4 self-center text-sm">No entries added yet</p>
+        )}
       </div>
-      <div className="flex flex-col w-full">
-        <h1 className="mb-4 mt-8 self-center">Recommended</h1>
-        <Carousel movies={lastFavoriteMovieDetails}></Carousel>
-      </div>
+
+      {lastFavoriteMovieDetails && lastFavoriteMovieDetails.length > 0 ? (
+        <div className="flex flex-col w-full">
+          <h1 className="mb-4 mt-8 self-center">Recommended </h1>
+          <p className="text-sm self-center mb-5">*based on favorites*</p>
+          <Carousel movies={lastFavoriteMovieDetails}></Carousel>
+        </div>
+      ) : (
+        <div className="flex flex-col w-full">
+          <h1 className="mb-4 mt-8 self-center">Recommended</h1>
+          <p className="text-sm self-center mb-5">*based on favorites*</p>
+          <p className="mb-4 self-center text-sm">No entries added yet</p>
+        </div>
+      )}
+
       {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
