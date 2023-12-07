@@ -8,6 +8,7 @@ const ContactForm = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [formError, setFormError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,11 +26,15 @@ const ContactForm = () => {
     if (error) {
       console.log(error);
       setFormError("Error in processing request");
+      setSuccessMessage(null);
     }
 
     if (data) {
       console.log(data);
       setFormError(null);
+      setSuccessMessage(
+        "Successfully sent message. We will get back to you as soon as possible."
+      );
       setName("");
       setEmail("");
       setMessage("");
@@ -74,6 +79,7 @@ const ContactForm = () => {
         >
           Submit
         </button>
+        {successMessage && <p className="success">{successMessage}</p>}
         {formError && <p className="error">{formError}</p>}
       </form>
     </div>
