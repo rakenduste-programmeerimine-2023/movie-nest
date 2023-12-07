@@ -1,17 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //import supabase from "../../app/config/supabaseClient";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-const ManageFavorite = ({ movieid, user }) => {
+const ManageWatched = ({ movieid, user }) => {
   const [errorMessage, setErrorMessage] = useState("");
-  const [actionMessage, setActionMessage] = useState("");
+  //const [actionMessage, setActionMessage] = useState("");
+  const [isInWatched, setIsInWatched] = useState(false);
+  const [addedToWatched, setAddedToWatched] = useState(false);
+  const [initialCheckComplete, setInitialCheckComplete] = useState(false);
+  const supabase = createClientComponentClient();
+
+  useEffect(() => {
+    const fetchWatched = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("Watched")
+          .select("id, user_id, movie_id");
+
+        if (error) {
+          setErrorMessage(error.message);
+          return;
+        }
+
+        const existsInCheckArray = data.find((entry) => {
+          return (
+            entry.user_id === user.id.toString() &&
+            entry.movie_id.toString() === movieid
+          );
+        });
+
+        if (existsInCheckArray) {
+          setIsInWatched(true);
+          console.log("Entry is in watched");
+        }
+
+        setInitialCheckComplete(true);
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
+    };
+
+    // Call the async function
+    fetchWatched();
+  }, [supabase, movieid, user]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
     setErrorMessage("");
-    const supabase = createClientComponentClient();
 
     const { data, select_error } = await supabase
       .from("Watched")
@@ -37,7 +74,8 @@ const ManageFavorite = ({ movieid, user }) => {
       if (error) {
         setErrorMessage(error.message);
       } else {
-        setActionMessage("Added to watched");
+        setAddedToWatched(true);
+        //setActionMessage("Added to watched");
         console.log("Entry added to database");
       }
     } else {
@@ -50,30 +88,37 @@ const ManageFavorite = ({ movieid, user }) => {
       if (deleteError) {
         setErrorMessage(deleteError.message);
       } else {
-        setActionMessage("Removed from watched");
+        setAddedToWatched(false);
+        //setActionMessage("Removed from watched");
         console.log("Entry deleted successfully");
       }
     }
+    //reload page after click
+    window.location.reload();
   };
 
-  return (
-    <div className="relative">
+  return initialCheckComplete ? (
+    <div className="relative mx-2">
       <button
         onClick={submitHandler}
-        className="py-1 px-2 absolute right-10 hover:bg-gray-300 border-solid border border-gray-800 rounded"
+        className="flex justify-center py-1 px-1 w-full hover:bg-gray-300 border-solid border border-gray-800 rounded"
       >
-        Watched
+        {isInWatched || addedToWatched
+          ? "Remove from Watched"
+          : "Add to Watched"}
       </button>
-      {actionMessage && (
+      {/* {actionMessage && (
         <div className="absolute bottom-0 left-0 right-10 top-11 text-xs">
           <p className="">{actionMessage}</p>
         </div>
-      )}
-      <div className="absolute bottom-0 left-0 right-10 top-11 text-xs w-2/3">
+      )} */}
+      <div className="absolute bottom-0 left-0 right-0 top-11 text-xs w-2/3">
         {errorMessage && <p>{errorMessage}</p>}
       </div>
     </div>
+  ) : (
+    <div className=""></div>
   );
 };
 
-export default ManageFavorite;
+export default ManageWatched;

@@ -44,7 +44,7 @@ async function MovieDetailsPage({ params }) {
               className="custom-width"
             />
             {user && session && (
-              <div className="grid grid-cols-3 mt-3">
+              <div className="grid grid-cols-3 mt-3 w-1/2 text-sm">
                 <div className="col-span-1">
                   <ManageFavorite movieid={params.id} user={user} />
                 </div>
