@@ -39,10 +39,13 @@ async function MovieDetailsPage({ params }) {
         <div className="animate-in flex flex-row gap-8 self-center items-center pb-10"></div>
         <div className="flex flex-row justify-end gap-10">
           <div className="flex flex-col w-1/2 items-end">
-            <img
-              src={IMAGE_BASE_URL + movieDetails.backdrop_path}
-              className="custom-width"
-            />
+            {movieDetails.backdrop_path && (
+              <img
+                src={IMAGE_BASE_URL + movieDetails.backdrop_path}
+                className="custom-width"
+              />
+            )}
+
             {user && session && (
               <div className="grid grid-cols-3 mt-3 w-1/2 text-sm">
                 <div className="col-span-1">
