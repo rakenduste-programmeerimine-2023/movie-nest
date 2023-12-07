@@ -43,7 +43,7 @@ async function MovieDetailsPage({ params }) {
               src={IMAGE_BASE_URL + movieDetails.backdrop_path}
               className="custom-width"
             />
-            {session && (
+            {user && session && (
               <div className="grid grid-cols-3 mt-3">
                 <div className="col-span-1">
                   <ManageFavorite movieid={params.id} user={user} />

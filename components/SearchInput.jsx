@@ -29,8 +29,14 @@ export default function SearchInput() {
           placeholder="Search"
           aria-label="Search"
           style={{ width: "180px", height: "28px", outline: "none" }}
+          autoComplete="off"
+          id="search-input"
         />
-        <button className="search-button" type="submit">
+        <button
+          className="search-button"
+          type="submit"
+          id="search-submit-button"
+        >
           <span role="img" aria-label="luup">
             🔍
           </span>

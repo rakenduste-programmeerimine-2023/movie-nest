@@ -47,6 +47,7 @@ const ContactForm = () => {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          autoComplete="off"
         />
         <label htmlFor="email">Email:</label>
         <input
@@ -55,6 +56,7 @@ const ContactForm = () => {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="off"
         />
         <label htmlFor="message">Message:</label>
         <textarea
@@ -68,6 +70,7 @@ const ContactForm = () => {
         <button
           type="submit"
           className="self-start border border-gray-600 rounded py-2 px-4"
+          id="submit-button"
         >
           Submit
         </button>
