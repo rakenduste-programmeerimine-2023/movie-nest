@@ -90,9 +90,21 @@ export function Carousel({ movies }) {
       >
         {movies.map((movie) => (
           <div className="p-3" key={movie.id}>
-            <Link className="text-decoration-none" href={"/movies/" + movie.id}>
-              <img src={IMAGE_BASE_URL + movie.poster_path} />
-            </Link>
+            {movie.poster_path ? (
+              <Link
+                className="text-decoration-none"
+                href={"/movies/" + movie.id}
+              >
+                <img src={IMAGE_BASE_URL + movie.poster_path} />
+              </Link>
+            ) : (
+              <div
+                style={{
+                  height: "330px",
+                }}
+              ></div>
+            )}
+
             <div
               style={{
                 width: "220px",
@@ -101,8 +113,14 @@ export function Carousel({ movies }) {
               className="flex flex-col overflow-y-auto"
             >
               <div className="flex-1 mb-2">
-                <h4 className="custom-size">{movie.title}</h4>
+                <Link
+                  className="text-decoration-none"
+                  href={"/movies/" + movie.id}
+                >
+                  <h4 className="custom-size">{movie.title}</h4>
+                </Link>
               </div>
+
               <div className="p-container">
                 <p
                   className="text-sm"
