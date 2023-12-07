@@ -13,6 +13,10 @@ export default async function AuthButton() {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
   const signOut = async () => {
     "use server";
 
@@ -22,7 +26,7 @@ export default async function AuthButton() {
     return redirect("/login");
   };
 
-  return user ? (
+  return session && user ? (
     <div
       className="flex items-center gap-4"
       style={{ whiteSpace: "nowrap", display: "inline-flex" }}
@@ -33,6 +37,7 @@ export default async function AuthButton() {
         <button
           className="log-out-button"
           style={{ whiteSpace: "nowrap", display: "inline-flex" }}
+          name="sign-out-button"
         >
           Log out
         </button>

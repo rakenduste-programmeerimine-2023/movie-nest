@@ -8,7 +8,6 @@ import Footer from "../../components/Footer";
 import HeaderButton from "../../components/HeaderButton";
 import AuthButton from "../../components/AuthButton";
 
-
 export default function Login({
   searchParams,
 }: {
@@ -114,8 +113,10 @@ export default function Login({
           </label>
           <input
             className="rounded-md px-4 py-2 bg-inherit border mb-6"
+            id="email"
             name="email"
             placeholder="you@example.com"
+            autoComplete="on"
             required
           />
           <label className="text-md" htmlFor="password">
@@ -124,6 +125,7 @@ export default function Login({
           <input
             className="rounded-md px-4 py-2 bg-inherit border mb-6"
             type="password"
+            id="password"
             name="password"
             placeholder="••••••••"
             required

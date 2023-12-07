@@ -46,6 +46,7 @@ export default function SearchResults({ searchText, movies }) {
             aria-label="Default select example"
             className="form-select rounded pl-2 border-2 border-solid border-gray-400"
             onChange={(e) => filterMovies(e.target.value)}
+            id="sorting-filter"
             defaultValue={"DEFAULT"}
           >
             <option value="DEFAULT" disabled>
