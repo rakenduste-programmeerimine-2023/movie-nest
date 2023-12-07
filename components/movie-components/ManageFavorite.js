@@ -1,17 +1,56 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //import supabase from "../../app/config/supabaseClient";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const ManageFavorite = ({ movieid, user }) => {
   const [errorMessage, setErrorMessage] = useState("");
-  const [actionMessage, setActionMessage] = useState("");
+  //const [actionMessage, setActionMessage] = useState("");
+  const [isInFavorites, setIsInFavorites] = useState(false);
+  const [addedToFavorites, setAddedToFavorites] = useState(false);
+  const [initialCheckComplete, setInitialCheckComplete] = useState(false);
+  const supabase = createClientComponentClient();
 
+  //initial check for favorites
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("Favorite")
+          .select("id, user_id, movie_id");
+
+        if (error) {
+          setErrorMessage(error.message);
+          return;
+        }
+
+        const existsInCheckArray = data.find((entry) => {
+          return (
+            entry.user_id === user.id.toString() &&
+            entry.movie_id.toString() === movieid
+          );
+        });
+
+        if (existsInCheckArray) {
+          setIsInFavorites(true);
+          console.log("Entry is in favorites");
+        }
+
+        setInitialCheckComplete(true);
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
+    };
+
+    // Call the async function
+    fetchFavorites();
+  }, [supabase, movieid, user]);
+
+  //button logic for favorites
   const submitHandler = async (event) => {
     event.preventDefault();
     setErrorMessage("");
-    const supabase = createClientComponentClient();
 
     const { data, select_error } = await supabase
       .from("Favorite")
@@ -37,7 +76,8 @@ const ManageFavorite = ({ movieid, user }) => {
       if (error) {
         setErrorMessage(error.message);
       } else {
-        setActionMessage("Added to favorites");
+        setAddedToFavorites(true);
+        //setActionMessage("Added to favorites");
         console.log("Entry added to database");
       }
     } else {
@@ -50,25 +90,28 @@ const ManageFavorite = ({ movieid, user }) => {
       if (deleteError) {
         setErrorMessage(deleteError.message);
       } else {
-        setActionMessage("Removed from favorites");
+        setAddedToFavorites(false);
+        //setActionMessage("Removed from favorites");
         console.log("Entry deleted successfully");
       }
     }
+    //reload page after click
+    window.location.reload();
   };
 
-  return (
-    <div className="relative ">
+  return initialCheckComplete ? (
+    <div className="relative mr-2">
       <button
         onClick={submitHandler}
-        className="font-bold py-1 px-2 border-solid border border-gray-800 rounded group transition-colors"
+        className="flex justify-center py-1 px-1 hover:bg-gray-500 border-solid border border-gray-800 rounded w-full group transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
+          fill={isInFavorites || addedToFavorites ? "white" : "none"}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 group-hover:fill-white"
+          className="w-6 h-5 group-hover:fill-white"
         >
           <path
             strokeLinecap="round"
@@ -77,13 +120,17 @@ const ManageFavorite = ({ movieid, user }) => {
           />
         </svg>
       </button>
-      {actionMessage && (
+      {/* {actionMessage && (
         <div className="absolute bottom-0 left-0 right-0 top-11 text-xs w-2/3">
           <p className="">{actionMessage}</p>
         </div>
-      )}
-      <div>{errorMessage && <p>{errorMessage}</p>}</div>
+      )} */}
+      <div className="absolute bottom-0 left-0 right-0 top-11 text-xs w-2/3">
+        {errorMessage && <p>{errorMessage}</p>}
+      </div>
     </div>
+  ) : (
+    <div className=""></div>
   );
 };
 
