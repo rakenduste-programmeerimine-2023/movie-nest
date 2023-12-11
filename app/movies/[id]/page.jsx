@@ -47,21 +47,23 @@ async function MovieDetailsPage({ params }) {
             )}
 
             {user && session && (
-              <div className="grid grid-cols-3 mt-3 w-1/3 text-sm">
-                <div className="col-span-1">
-                  <ManageFavorite movieid={params.id} user={user} />
-                </div>
-                <div className="col-span-1">
-                  <ManageWatched movieid={params.id} user={user} />
-                </div>
-                <div className="col-span-1">
-                  <ManageToWatch movieid={params.id} user={user} />
+              <div className="flex w-80">
+                <div className="grid grid-cols-3 mt-3 w-full text-sm">
+                  <div className="col-span-1">
+                    <ManageFavorite movieid={params.id} user={user} />
+                  </div>
+                  <div className="col-span-1">
+                    <ManageWatched movieid={params.id} user={user} />
+                  </div>
+                  <div className="col-span-1">
+                    <ManageToWatch movieid={params.id} user={user} />
+                  </div>
                 </div>
               </div>
             )}
           </div>
           <div className="animate-in w-2/4 flex flex-col gap-10 self-start">
-            <h1 className="text-2xl mr-10 font-bold self-start w-1/3">
+            <h1 className="text-2xl mr-10 font-bold self-start w-1/2">
               {movieDetails.title}
             </h1>
 

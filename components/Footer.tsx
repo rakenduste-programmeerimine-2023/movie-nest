@@ -8,17 +8,19 @@ import Link from "next/link";
 export default function Header() {
   return (
     <div className="bottom-button-container, button-container">
-      <Link href="http://localhost:3000/">
+      <Link href="/">
         <Image src={logo} alt="Logo" className="logo-image" />
-        </Link>
+      </Link>
       <div>
         <Image src={api_logo} alt="Logo" width={130} />
       </div>
       <div className="right-buttons">
-        <Link href="http://localhost:3000/">
-        <button className="home-button">Home</button>
+        <Link href="/">
+          <button className="home-button">Home</button>
         </Link>
-        <button className="contact-button">Contact</button>
+        <Link href="/contact">
+          <button className="contact-button">Contact</button>
+        </Link>
       </div>
     </div>
   );
