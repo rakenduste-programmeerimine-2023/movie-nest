@@ -101,7 +101,7 @@ const ManageWatched = ({ movieid, user }) => {
     <div className="relative mx-2">
       <button
         onClick={submitHandler}
-        className="flex justify-center py-1 px-1 w-full hover:bg-gray-300 border-solid border border-gray-800 rounded"
+        className="flex justify-center py-1 px-1 w-full hover:bg-gray-500 border-solid border border-gray-800 rounded"
       >
         {isInWatched || addedToWatched
           ? "Remove from Watched"

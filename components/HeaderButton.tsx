@@ -12,7 +12,7 @@ export default function HeaderButton() {
   return (
     <div className="button-container">
       <div className="left-buttons">
-        <Link href="http://localhost:3000/">
+        <Link href="/">
           <Image src={logo} alt="Logo" className="logo-image" />
         </Link>
         <SearchInput />
